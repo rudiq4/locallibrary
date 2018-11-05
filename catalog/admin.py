@@ -12,6 +12,9 @@ class AuthorAdmin(admin.ModelAdmin):
     #  a,b,c,(d,e) -> d,e together fields / порядок виведення полей
 
 
+admin.site.register(Author, AuthorAdmin)
+
+
 class BooksInstanceInline(admin.TabularInline):
     model = BookInstance
 
@@ -28,6 +31,7 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
+    list_display = ('book', 'imprint', 'id')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
@@ -40,10 +44,5 @@ class BookInstanceAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Author, AuthorAdmin)
-#  admin.site.register(Author)
-
-#  admin.site.register(Book)
-#  admin.site.register(BookInstance)
 admin.site.register(Language)
 admin.site.register(Genre)
