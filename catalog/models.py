@@ -33,6 +33,7 @@ class Book(models.Model):
         Creates a string for the Genre. This is required to display genre in Admin.
         """
         return ', '.join([genre.name for genre in self.genre.all()[:3]])
+
     display_genre.short_description = 'Genre'
 
 
@@ -57,7 +58,7 @@ class BookInstance(models.Model):
 
     def __str__(self):
         return '%s (%s)' % (self.id, self.book.title)
-    #  need to be changed (In admin.py reassigned)
+        #  need to be changed (In admin.py reassigned)
 
 
 class Author(models.Model):
